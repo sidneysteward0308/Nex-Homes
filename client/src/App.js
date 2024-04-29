@@ -3,8 +3,6 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Form from './components/Form'; // Assuming this is your login form
 import RegForm from './components/RegForm';
-import Dashboard from './components/Dashboard';
-import AddProperty from './components/AddProperty';
 
 function App() {
   return (
@@ -13,9 +11,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Form />} />
         <Route path="/register" element={<RegForm />} />
-        <Route path="/dashboard" element = {<Dashboard/>}/>
-        <Route path="/addproperty" element = {<AddProperty/>}/>
-        
       </Routes>
     </Router>
   );

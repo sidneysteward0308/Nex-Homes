@@ -1,41 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-const Dashboard = () => {
-  const [data, setData] = useState(null);
+import React from 'react';
+import { Card, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 
-  useEffect(() => {
+const homes = [
+  { id: 1, title: 'Home 1', image: 'url-to-image-1', description: 'Description 1' },
+  { id: 2, title: 'Home 2', image: 'url-to-image-2', description: 'Description 2' },
+  // Add more homes as needed
+];
 
-    const fetchData = async () => {
-       const token = localStorage.getItem('token');
-
-       const requestOptions = {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "x-token" : token
-            },
-            
-          };
-      const response = await fetch('http://localhost:3002/property',requestOptions);
-      const data = await response.json();
-      setData(data);
-    };
-
-    fetchData();
-  }, []);
-
+function Dashboard() {
   return (
     <div>
-    <Link to="/addproperty">Add property Here</Link>
-    {data && data.map((item, index) => (
-      <div key={index} className="card">
-        <img src={item.image} alt={item.title} />
-        <h2>{item.title}</h2>
-        <p>{item.description}</p>
-      </div>
-    ))}
-  </div>
+      <Button variant="contained" color="primary" onClick={() => {/* Add home logic */}}>
+        Add Home
+      </Button>
+      {homes.map((home) => (
+        <Card key={home.id}>
+          <CardMedia
+            component="img"
+            alt={home.title}
+            height="140"
+            image={home.image}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {home.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {home.description}
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
   );
-};
+}
 
 export default Dashboard;
