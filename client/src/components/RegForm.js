@@ -28,6 +28,7 @@ const Form = () => {
   return (
     <div class="login-page">
   <div class="form">
+ REGISTER AN ACCOUNT
     <form onSubmit={handleSubmit}>
       <label>
         <input
